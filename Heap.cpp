@@ -50,7 +50,8 @@ void Heap::build_heap(){
 	}
 }
 
-void heapsort(Heap &to_sort){
+Heap heapsort(std::vector<int> &array){
+	Heap to_sort(array);
 	for (int i= to_sort.length; i>=1; i--){
 		int temp = to_sort.a[0];
 		to_sort.a[0] = to_sort.a[i];
@@ -60,6 +61,8 @@ void heapsort(Heap &to_sort){
 		to_sort.max_heapify(0);	
 	}
 
+	return to_sort;
+
 }
 int main(int argc, char** argv){
 	// std::cout << argv[6] << endl;
@@ -68,10 +71,9 @@ int main(int argc, char** argv){
 		int j = int(*argv[i] - '0');
 		a.push_back(j);
   }
-	Heap h(a);
-	std::cout << "Before sorting: "<<endl;
-	h.printheap();
-	heapsort(h);
+	// std::cout << "Before sorting: "<<endl;
+	// h.printheap();
+	Heap h = heapsort(a);
 	std::cout << "After sorting: "<<endl;
 	h.printheap();
 	return 1;
