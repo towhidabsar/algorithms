@@ -18,7 +18,7 @@ void Heap::printheap(){
 }
 
 void Heap::max_heapify(int index){
-	std::cout << "In max heapify: "<< endl;
+	// std::cout << "In max heapify: "<< endl;
 
 	// Algorithm	
 	int left_index= left(index);
@@ -42,7 +42,7 @@ void Heap::max_heapify(int index){
 	}
 }
 void Heap::build_heap(){
-	std::cout << "In build heap" << endl;
+	// std::cout << "In build heap" << endl;
 	
 	int i = floor(this->length/2);
 	for(; i >= 0; i--){		
@@ -61,10 +61,18 @@ void heapsort(Heap &to_sort){
 	}
 
 }
-int main(){
-	std::vector<int> a = {4,1,3,2,16,9,10,14,8,7};
+int main(int argc, char** argv){
+	// std::cout << argv[6] << endl;
+	std::vector<int> a;
+	for (int i = 1; i<argc; i++){
+		int j = int(*argv[i] - '0');
+		a.push_back(j);
+  }
 	Heap h(a);
+	std::cout << "Before sorting: "<<endl;
+	h.printheap();
 	heapsort(h);
+	std::cout << "After sorting: "<<endl;
 	h.printheap();
 	return 1;
 }
